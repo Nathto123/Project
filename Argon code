@@ -1,0 +1,38 @@
+// set up the pins 
+int ledPin = D2;
+int buzzer = D3;
+
+//Set up pins and fuction for the applets
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  pinMode(buzzer, OUTPUT);
+  
+  Spark.function("alert", dooralarm);
+}
+
+
+// function  
+int dooralarm(String dmy) {
+// sets up i    
+    int i = 0;
+
+// makes it loop 5 times
+  while (i  < 5){
+
+    i += 1;
+// turn on buzzer    
+    tone(buzzer, 2000); 
+// turn on led
+  digitalWrite(ledPin, HIGH); 
+// waits
+  delay(500);               
+// turn off buzzer  
+  noTone(buzzer);  
+// turn off led
+  digitalWrite(ledPin, LOW); 
+// waits 
+  delay(500); 
+}
+ return 0;
+}
+
